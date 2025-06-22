@@ -1,38 +1,235 @@
-.App {
+/* ===== Base Styles ===== */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #2e86de;
+  --primary-dark: #1b4f72;
+  --danger: #e74c3c;
+  --danger-dark: #c0392b;
+  --background: #f0f2f5;
+  --card-bg: #ffffff;
+  --text: #2c3e50;
+  --border: #ddd;
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --radius: 16px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background);
+  padding: 2rem;
+  min-height: 100vh;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ===== Typography ===== */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  font-size: 2rem;
+  font-weight:700;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ===== Card/Container Styles ===== */
+.card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  transition: var(--transition);
+  animation: fadeInUp 0.5s ease both;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--primary), 
+    #4a90e2, 
+    var(--primary-dark));
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* ===== Form Elements ===== */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* ===== Button Styles ===== */
+.btn {
+  background-color: var(--primary);
   color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-block;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.btn-danger {
+  background-color: var(--danger);
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-dark);
+}
+
+/* ===== List Styles ===== */
+.list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.list-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  position: relative;
+}
+
+.list-item:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== Specific Components ===== */
+/* Delete button inside list */
+.list-item .btn {
+  position: absolute;
+  right: 20px;
+  top: 16px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Utility Classes ===== */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+/* ===== Utility Classes ===== */
+.mr-1 { margin-right: 0.5rem; }  /* ~8px */
+.mr-2 { margin-right: 1rem; }    /* ~16px */
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c1e26;
+    --card-bg: #2a2c35;
+    --text: #f0f0f0;
+    --border: #444;
+    --primary: #4a90e2;
+    --primary-dark: #357ab8;
+  }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) {
+  .card-container {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+.header-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  /* Center the title horizontally */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-title::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  bottom: -10px;
+  left: 50%; /* Start from center */
+  transform: translateX(-50%); /* Pull back by half of width */
+  background: linear-gradient(90deg, transparent, #2e86de, transparent);
+  border-radius: 2px;
 }
