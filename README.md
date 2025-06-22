@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# 🧠 Course Management System – IIT Bombay Internship Assignment (2024–25)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack course management system built as part of the Application Software Cell internship assignment for IIT Bombay. This app allows adding and managing courses, their prerequisites, and course instances by year and semester.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📋 Features Overview
 
-### `npm start`
+### ✅ Backend API – Spring Boot
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Feature | Status |
+|--------|--------|
+| `POST /api/courses` – Create course with validations | ✅ Implemented |
+| `GET /api/courses` – List all courses with prerequisites | ✅ Implemented |
+| `GET /api/courses/{id}` – View course details | ✅ Implemented |
+| `DELETE /api/courses/{id}` – Delete course with prereq check | ✅ Implemented |
+| `POST /api/instances` – Create course instance | ✅ Implemented |
+| `GET /api/instances/{year}/{sem}` – List instances by semester | ✅ Implemented |
+| `GET /api/instances/{year}/{sem}/{id}` – View instance detail | ✅ Implemented |
+| `GET /api/instances/by-course/{id}` – List all instances of a course | ✅ Implemented |
+| `DELETE /api/instances/...` – Delete instance | ✅ Implemented |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### ✅ Frontend – React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Feature | Status |
+|--------|--------|
+| Add Course form with multi-select prerequisites | ✅ Done |
+| View all courses with their prerequisites | ✅ Done |
+| Delete a course only if not a prerequisite | ✅ Done |
+| Create course instances (year + semester) | ✅ Done |
+| List course instances and delete them | ✅ Done |
+| View all instances of a selected course | ✅ Done |
+| Toast & alert-based validation feedback | ✅ Done |
+| Intro Home Page + navigation | ✅ Done |
+| Beautiful glassmorphism UI with particles | ✅ Done |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💻 Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Frontend:** React, HTML/CSS, Axios, React Toastify, tsparticles
+- **Backend:** Spring Boot, Spring Data JPA
+- **Database:** H2 (in-memory)
+- **Build Tools:** Maven, Docker
+- **Deployment:** Docker Compose
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Getting Started (Local Development)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🧪 Backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+1.git clone https://github.com/your-username/course-management.git
+2.cd course
+3.Go to : src\main\java\com\example\courses\CoursesApplication.java and do **run java**
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 💻 Frontend
+```bash
+cd courses-frontend
+npm install
+npm start
+React dev server runs on http://localhost:3000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+###🐳 Docker & Deployment Instructions
+This application is fully dockerized using Docker Compose for both the Spring Boot backend and the React frontend.
 
-## Learn More
+📦 Step 1: Build and Start All Services
+```bash
+docker compose up --build
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This command:
+-Builds both the backend and frontend Docker images.
+-Runs both containers.
+Frontend runs on: http://localhost:3000
+Backend runs on: http://localhost:8080
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+###🔒 Validations & Edge Case Handling
+❌ Prevent duplicate course codes
+❌ Reject nonexistent prerequisite course IDs
+❌ Block circular prerequisites (e.g., CS101 ←→ CS102)
+❌ Prevent invalid year/semester (e.g., year < 2000, sem = 3)
+❌ Block duplicate course instances for same year + sem
+❌ Client-side validation for empty fields
+❌ UI + Backend error handling with alerts / messages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+✅ All errors display appropriate alerts
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+###📁 Folder Structure
+```css
+course-management/
+│
+├── backend/
+│   └── src/...
+│   └── Dockerfile
+│
+├── frontend/
+│   └── src/
+│       └── components/
+│       └── App.js, index.js
+│   └── Dockerfile
+│
+├── docker-compose.yml
+├── README.md
+└── .gitignore
 
-### Making a Progressive Web App
+###📸 Screenshots
+╰┈➤
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+###👩‍💻 Author
+Name: Sayed Iqra Hassan
+Email: iqrahsayed625@gmail.com
+GitHub: https://github.com/IqraS-gif
+Date: June 2025
 
-### Advanced Configuration
+###✅ Final Notes
+This project implements all required features with full validation, clean UI, and Docker-based deployment. Thank you for the opportunity!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
