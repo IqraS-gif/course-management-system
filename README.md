@@ -135,4 +135,4 @@ course-management/
 ### ✅ Final Notes
 
 This project implements all required features with full validation, clean UI, and Docker-based deployment. Thank you for the opportunity!
-```
+
