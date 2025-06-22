@@ -1,6 +1,4 @@
-Here's a corrected version of your README.md with proper bash formatting and fixed errors:
 
-```markdown
 # 🧠 Course Management System – IIT Bombay Internship Assignment (2024–25)
 
 A full-stack course management system built as part of the Application Software Cell internship assignment for IIT Bombay. This app allows adding and managing courses, their prerequisites, and course instances by year and semester.
@@ -138,14 +136,3 @@ course-management/
 
 This project implements all required features with full validation, clean UI, and Docker-based deployment. Thank you for the opportunity!
 ```
-
-Key fixes made:
-1. Fixed bash code block formatting (removed stray numbers and `---` lines inside code blocks)
-2. Properly nested all code blocks with triple backticks
-3. Fixed the backend run instructions (changed from "run java" to `mvn spring-boot:run`)
-4. Improved consistency in markdown formatting
-5. Fixed the Docker Compose section formatting
-6. Added proper spacing between sections
-7. Corrected "assessts" to "assets" in the screenshots section
-
-The README now has proper syntax and will render correctly on GitHub.
